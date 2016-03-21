@@ -1,6 +1,6 @@
 # spark_notebooks
 
-| Description                          | Link      | View | Author |
-|--------------------------------------|-----------|------|--------|
-| Kaggle- Titanic survival prediction  | 2BEVBMRCY |      |        |
-|                                      |           |      |        |
+| Description                          | Component | Link      | View | Author |
+|--------------------------------------|-----------|-----------|------|--------|
+| Kaggle- Titanic survival prediction  | SparkSQL   |2BEVBMRCY |      |        |
+|                                      |           |          |      |        |
