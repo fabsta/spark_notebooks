@@ -1,0 +1,524 @@
+{
+  "paragraphs": [
+    {
+      "text": "%md #Predicting forest cover with decision trees\n\n\nDataset: covtype dataset (581,012 in total)\nThe data set records the types of forest covering parcels of land in Colorado, USA\n\nEach data point contains information about\nelevation, slope, distance to water, shade, and soil type, along with the known forest type covering the land",
+      "dateUpdated": "Mar 28, 2016 5:44:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/markdown",
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445415799822_-1921808236",
+      "id": "20151021-102319_247910800",
+      "result": {
+        "code": "SUCCESS",
+        "type": "HTML",
+        "msg": "\u003ch1\u003ePredicting forest cover with decision trees\u003c/h1\u003e\n\u003cp\u003eDataset: covtype dataset\n\u003cbr  /\u003eThe data set records the types of forest covering parcels of land in Colorado, USA\u003c/p\u003e\n\u003cp\u003eEach data point (581,012 in total) contains information about\n\u003cbr  /\u003eelevation, slope, distance to water, shade, and soil type, along with the known forest type covering the land\u003c/p\u003e\n"
+      },
+      "dateCreated": "Oct 21, 2015 10:23:19 AM",
+      "dateStarted": "Mar 28, 2016 5:43:47 PM",
+      "dateFinished": "Mar 28, 2016 5:43:47 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val data_dir \u003d \"/Users/fabianschreiber/Box Sync/projects/zeppelin_data/adv_analytics/\"",
+      "dateUpdated": "Mar 28, 2016 5:38:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1459179476437_193821412",
+      "id": "20160328-173756_2133107999",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "data_dir: String \u003d /Users/fabianschreiber/Box Sync/projects/zeppelin_data/adv_analytics/\n"
+      },
+      "dateCreated": "Mar 28, 2016 5:37:56 PM",
+      "dateStarted": "Mar 28, 2016 5:38:12 PM",
+      "dateFinished": "Mar 28, 2016 5:38:13 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "import org.apache.spark.mllib.evaluation.MulticlassMetrics\nimport org.apache.spark.mllib.linalg.Vectors\nimport org.apache.spark.mllib.regression.LabeledPoint\nimport org.apache.spark.mllib.tree.{RandomForest, DecisionTree}\nimport org.apache.spark.mllib.tree.model.DecisionTreeModel\nimport org.apache.spark.rdd.RDD\nimport org.apache.spark.{SparkConf, SparkContext}",
+      "dateUpdated": "Mar 28, 2016 5:37:10 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416058898_491507600",
+      "id": "20151021-102738_1252129680",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "import org.apache.spark.mllib.evaluation.MulticlassMetrics\nimport org.apache.spark.mllib.linalg.Vectors\nimport org.apache.spark.mllib.regression.LabeledPoint\nimport org.apache.spark.mllib.tree.{RandomForest, DecisionTree}\nimport org.apache.spark.mllib.tree.model.DecisionTreeModel\nimport org.apache.spark.rdd.RDD\nimport org.apache.spark.{SparkConf, SparkContext}\n"
+      },
+      "dateCreated": "Oct 21, 2015 10:27:38 AM",
+      "dateStarted": "Mar 28, 2016 5:37:11 PM",
+      "dateFinished": "Mar 28, 2016 5:37:13 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def getMetrics(model: DecisionTreeModel, data: RDD[LabeledPoint]): MulticlassMetrics \u003d {\n    val predictionsAndLabels \u003d data.map(example \u003d\u003e\n      (model.predict(example.features), example.label)\n    )\n    //MulticlassMetrics computes standard metrics that in different ways measure the quality of the predictions from a classifier\n    new MulticlassMetrics(predictionsAndLabels)\n  }",
+      "dateUpdated": "Mar 28, 2016 5:37:16 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416072333_-1441086125",
+      "id": "20151021-102752_1251338597",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "getMetrics: (model: org.apache.spark.mllib.tree.model.DecisionTreeModel, data: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint])org.apache.spark.mllib.evaluation.MulticlassMetrics\n"
+      },
+      "dateCreated": "Oct 21, 2015 10:27:52 AM",
+      "dateStarted": "Mar 28, 2016 5:37:16 PM",
+      "dateFinished": "Mar 28, 2016 5:37:17 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def simpleDecisionTree(trainData: RDD[LabeledPoint], cvData: RDD[LabeledPoint]): Unit \u003d {\n    // Build a simple default DecisionTreeModel\n    //the use of trainClassifier instead of trainRegressor suggests that the target value within each LabeledPoint should be treated as a distinct category number, not a numeric feature value\n    val model \u003d DecisionTree.trainClassifier(trainData, 7, Map[Int,Int](), \"gini\", 4, 100)\n    // The Map holds information about categorical features (if empty, all features are numerical (have been one-hot encoded))\n    // the maximum depth of 4, and the maximum bin count of 100\n\n    val metrics \u003d getMetrics(model, cvData)\n    // metrics.confusionMatrix\n    //...\n    //14019.0  6630.0   15.0    0.0    0.0  1.0   391.0\n    //5413.0   22399.0  438.0   16.0   0.0  3.0   50.0\n    //0.0      457.0    2999.0  73.0   0.0  12.0  0.0\n    //0.0      1.0      163.0   117.0  0.0  0.0   0.0\n    //0.0      872.0    40.0    0.0    0.0  0.0   0.0\n    //0.0      500.0    1138.0  36.0   0.0  48.0  0.0\n    //1091.0   41.0     0.0     0.0    0.0  0.0   891.0\n\n    println(metrics.confusionMatrix)\n    //summarizes accuracy with a single number\n    println(metrics.precision)\n    // gives us the accuracy of each class\n    (0 until 7).map(\n      category \u003d\u003e (metrics.precision(category), metrics.recall(category))\n    ).foreach(println)\n    //...\n    //(0.6805931840866961,0.6809492105763744)\n    //(0.7297560975609756,0.7892237892589596)\n    //(0.6376224968044312,0.8473952434881087)\n    //(0.5384615384615384,0.3917910447761194)\n    //(0.0,0.0)\n    //(0.7083333333333334,0.0293778801843318)\n    //(0.6956168831168831,0.42828585707146427)\n    \n    \n  }",
+      "dateUpdated": "Mar 28, 2016 5:37:19 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416067772_1469169879",
+      "id": "20151021-102747_603369388",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "\u003cconsole\u003e:86: error: overloaded method value trainClassifier with alternatives:\n  (input: org.apache.spark.api.java.JavaRDD[org.apache.spark.mllib.regression.LabeledPoint],numClasses: Int,categoricalFeaturesInfo: java.util.Map[Integer,Integer],impurity: String,maxDepth: Int,maxBins: Int)org.apache.spark.mllib.tree.model.DecisionTreeModel \u003cand\u003e\n  (input: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint],numClasses: Int,categoricalFeaturesInfo: scala.collection.immutable.Map[Int,Int],impurity: String,maxDepth: Int,maxBins: Int)org.apache.spark.mllib.tree.model.DecisionTreeModel\n cannot be applied to (org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint], Int, scala.collection.Map[Int,Int], String, Int, Int)\n           val model \u003d DecisionTree.trainClassifier(trainData, 7, Map[Int,Int](), \"gini\", 4, 100)\n                                    ^\n"
+      },
+      "dateCreated": "Oct 21, 2015 10:27:47 AM",
+      "dateStarted": "Mar 28, 2016 5:37:19 PM",
+      "dateFinished": "Mar 28, 2016 5:37:20 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def classProbabilities(data: RDD[LabeledPoint]): Array[Double] \u003d {\n    // Count (category,count) in data\n    val countsByCategory \u003d data.map(_.label).countByValue()\n    // order counts by category and extract counts\n    val counts \u003d countsByCategory.toArray.sortBy(_._1).map(_._2)\n    counts.map(_.toDouble / counts.sum)\n  }\n",
+      "dateUpdated": "Feb 18, 2016 3:10:34 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416081237_-1570915070",
+      "id": "20151021-102801_203923676",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "classProbabilities: (data: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint])Array[Double]\n"
+      },
+      "dateCreated": "Oct 21, 2015 10:28:01 AM",
+      "dateStarted": "Feb 18, 2016 3:10:34 PM",
+      "dateFinished": "Feb 18, 2016 3:10:36 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "\n// we use this as a baseline classifier\n// it picks a class at random\n// \ndef randomClassifier(trainData: RDD[LabeledPoint], cvData: RDD[LabeledPoint]): Unit \u003d {\n    val trainPriorProbabilities \u003d classProbabilities(trainData)\n    val cvPriorProbabilities \u003d classProbabilities(cvData)\n    val accuracy \u003d trainPriorProbabilities.zip(cvPriorProbabilities).map {\n      case (trainProb, cvProb) \u003d\u003e trainProb * cvProb\n    }.sum\n    println(accuracy)\n    //...\n    //0.37737764750734776\n  }",
+      "dateUpdated": "Feb 18, 2016 3:12:30 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416075678_1811043086",
+      "id": "20151021-102755_2020112672",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "randomClassifier: (trainData: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint], cvData: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint])Unit\n"
+      },
+      "dateCreated": "Oct 21, 2015 10:27:55 AM",
+      "dateStarted": "Feb 18, 2016 3:12:30 PM",
+      "dateFinished": "Feb 18, 2016 3:12:32 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// not clear which set of parameters is best\n// so, we try different impurity settings\n// depths\n// and number of bins\n\ndef evaluate(\n      trainData: RDD[LabeledPoint],\n      cvData: RDD[LabeledPoint],\n      testData: RDD[LabeledPoint]): Unit \u003d {\n\n    val evaluations \u003d\n     // nice way to iterate over several settings\n      for (impurity \u003c- Array(\"gini\", \"entropy\");\n           depth    \u003c- Array(1, 20);\n           // how many chained decisions are allowed\n           bins     \u003c- Array(10, 300))\n        yield {\n          val model \u003d DecisionTree.trainClassifier(\n            trainData, 7, Map[Int,Int](), impurity, depth, bins)\n          val accuracy \u003d getMetrics(model, cvData).precision\n          ((impurity, depth, bins), accuracy)\n        }\n    //Sort by second value (accuracy), descending, and print\n    evaluations.sortBy(_._2).reverse.foreach(println)\n\n    val model \u003d DecisionTree.trainClassifier(\n      trainData.union(cvData), 7, Map[Int,Int](), \"entropy\", 20, 300)\n    println(getMetrics(model, testData).precision)\n    println(getMetrics(model, trainData.union(cvData)).precision)\n  }",
+      "dateUpdated": "Feb 18, 2016 3:10:51 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416120085_-913702652",
+      "id": "20151021-102840_5759062",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "evaluate: (trainData: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint], cvData: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint], testData: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint])Unit\n"
+      },
+      "dateCreated": "Oct 21, 2015 10:28:40 AM",
+      "dateStarted": "Feb 18, 2016 3:10:51 PM",
+      "dateFinished": "Feb 18, 2016 3:10:53 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "//\ndef unencodeOneHot(rawData: RDD[String]): RDD[LabeledPoint] \u003d {\n    rawData.map { line \u003d\u003e\n      val values \u003d line.split(\u0027,\u0027).map(_.toDouble)\n      // Which of 4 \"wilderness\" features is 1\n      val wilderness \u003d values.slice(10, 14).indexOf(1.0).toDouble\n      // Similarly for following 40 \"soil\" features\n      val soil \u003d values.slice(14, 54).indexOf(1.0).toDouble\n      // Add derived features back to first 10\n      val featureVector \u003d Vectors.dense(values.slice(0, 10) :+ wilderness :+ soil)\n      val label \u003d values.last - 1\n      LabeledPoint(label, featureVector)\n    }\n  }",
+      "dateUpdated": "Feb 18, 2016 3:11:09 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416126057_-701690684",
+      "id": "20151021-102846_363257549",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "unencodeOneHot: (rawData: org.apache.spark.rdd.RDD[String])org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint]\n"
+      },
+      "dateCreated": "Oct 21, 2015 10:28:46 AM",
+      "dateStarted": "Feb 18, 2016 3:11:09 PM",
+      "dateFinished": "Feb 18, 2016 3:11:11 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "// this time we treat categorical features as actual categorical values\n// might lead to an improvement\ndef evaluateCategorical(rawData: RDD[String]): Unit \u003d {\n    \n    val data \u003d unencodeOneHot(rawData)\n\n    val Array(trainData, cvData, testData) \u003d data.randomSplit(Array(0.8, 0.1, 0.1))\n    trainData.cache()\n    cvData.cache()\n    testData.cache()\n\n    val evaluations \u003d\n      for (impurity \u003c- Array(\"gini\", \"entropy\");\n           depth    \u003c- Array(10, 20, 30);\n           bins     \u003c- Array(40, 300))\n      yield {\n        // Specify value count for categorical features 10, 11\n        val model \u003d DecisionTree.trainClassifier(\n          trainData, 7, Map(10 -\u003e 4, 11 -\u003e 40), impurity, depth, bins)\n        val trainAccuracy \u003d getMetrics(model, trainData).precision\n        val cvAccuracy \u003d getMetrics(model, cvData).precision\n        // Return train and CV accuracy\n        ((impurity, depth, bins), (trainAccuracy, cvAccuracy))\n      }\n\n    evaluations.sortBy(_._2._2).reverse.foreach(println)\n\n    //use the hyperparameters to build a model on the training and CV sets together, and evaluate as before:\n\n    val model \u003d DecisionTree.trainClassifier(\n      trainData.union(cvData), 7, Map(10 -\u003e 4, 11 -\u003e 40), \"entropy\", 30, 300)\n    println(getMetrics(model, testData).precision)\n\n    trainData.unpersist()\n    cvData.unpersist()\n    testData.unpersist()\n  }",
+      "dateUpdated": "Feb 18, 2016 3:11:16 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416131335_-2101037758",
+      "id": "20151021-102851_382379071",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "evaluateCategorical: (rawData: org.apache.spark.rdd.RDD[String])Unit\n"
+      },
+      "dateCreated": "Oct 21, 2015 10:28:51 AM",
+      "dateStarted": "Feb 18, 2016 3:11:16 PM",
+      "dateFinished": "Feb 18, 2016 3:11:17 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "def evaluateForest(rawData: RDD[String]): Unit \u003d {\n\n    val data \u003d unencodeOneHot(rawData)\n\n    val Array(trainData, cvData) \u003d data.randomSplit(Array(0.9, 0.1))\n    trainData.cache()\n    cvData.cache()\n\n    val forest \u003d RandomForest.trainClassifier(\n        // includes \"20\" number of trees to build\n      trainData, 7, Map(10 -\u003e 4, 11 -\u003e 40), 20, \"auto\", \"entropy\", 30, 300)\n\n    val predictionsAndLabels \u003d cvData.map(example \u003d\u003e\n      (forest.predict(example.features), example.label)\n    )\n    println(new MulticlassMetrics(predictionsAndLabels).precision)\n\n    val input \u003d \"2709,125,28,67,23,3224,253,207,61,6094,0,29\"\n    val vector \u003d Vectors.dense(input.split(\u0027,\u0027).map(_.toDouble))\n    println(forest.predict(vector))\n  }",
+      "dateUpdated": "Feb 18, 2016 3:11:29 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416136206_1265930515",
+      "id": "20151021-102856_1549586829",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "evaluateForest: (rawData: org.apache.spark.rdd.RDD[String])Unit\n"
+      },
+      "dateCreated": "Oct 21, 2015 10:28:56 AM",
+      "dateStarted": "Feb 18, 2016 3:11:29 PM",
+      "dateFinished": "Feb 18, 2016 3:11:30 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "    val rawData \u003d sc.textFile(data_dir +\"/covtype.data\")\n\n    val data \u003d rawData.map { line \u003d\u003e\n      val values \u003d line.split(\u0027,\u0027).map(_.toDouble)\n      //init returns all but last value; target is last column\n      val featureVector \u003d Vectors.dense(values.init)\n      // DecisionTree needs labels starting at 0; subtract 1\n      val label \u003d values.last - 1\n      LabeledPoint(label, featureVector)\n    }\n\n    // Split into 80% train, 10% cross validation, 10% test\n    val Array(trainData, cvData, testData) \u003d data.randomSplit(Array(0.8, 0.1, 0.1))\n    trainData.cache()\n    cvData.cache()\n    testData.cache()\n\n    simpleDecisionTree(trainData, cvData)\n    randomClassifier(trainData, cvData)\n    evaluate(trainData, cvData, testData)\n    evaluateCategorical(rawData)\n    evaluateForest(rawData)\n\n    trainData.unpersist()\n    cvData.unpersist()\n    testData.unpersist()",
+      "dateUpdated": "Mar 28, 2016 5:38:33 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala",
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416063191_2090139280",
+      "id": "20151021-102743_1062131881",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "rawData: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[155] at textFile at \u003cconsole\u003e:69\ndata: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint] \u003d MapPartitionsRDD[156] at map at \u003cconsole\u003e:72\ntrainData: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint] \u003d MapPartitionsRDD[157] at randomSplit at \u003cconsole\u003e:75\ncvData: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint] \u003d MapPartitionsRDD[158] at randomSplit at \u003cconsole\u003e:75\ntestData: org.apache.spark.rdd.RDD[org.apache.spark.mllib.regression.LabeledPoint] \u003d MapPartitionsRDD[159] at randomSplit at \u003cconsole\u003e:75\nres37: trainData.type \u003d MapPartitionsRDD[157] at randomSplit at \u003cconsole\u003e:75\nres38: cvData.type \u003d MapPartitionsRDD[158] at randomSplit at \u003cconsole\u003e:75\nres39: testData.type \u003d MapPartitionsRDD[159] at randomSplit at \u003cconsole\u003e:75\n\u003cconsole\u003e:71: error: not found: value simpleDecisionTree\n                  simpleDecisionTree(trainData, cvData)\n                  ^\n"
+      },
+      "dateCreated": "Oct 21, 2015 10:27:43 AM",
+      "dateStarted": "Mar 28, 2016 5:38:33 PM",
+      "dateFinished": "Mar 28, 2016 5:38:35 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "//",
+      "dateUpdated": "Oct 21, 2015 10:47:58 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416140090_-1162235118",
+      "id": "20151021-102900_867754804",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Oct 21, 2015 10:29:00 AM",
+      "dateStarted": "Oct 21, 2015 10:48:09 AM",
+      "dateFinished": "Oct 21, 2015 10:48:10 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "//",
+      "dateUpdated": "Oct 21, 2015 10:47:59 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416144555_1481556821",
+      "id": "20151021-102904_903366107",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Oct 21, 2015 10:29:04 AM",
+      "dateStarted": "Oct 21, 2015 10:48:10 AM",
+      "dateFinished": "Oct 21, 2015 10:48:10 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "dateUpdated": "Oct 21, 2015 10:47:59 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        }
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445416149567_-2108919915",
+      "id": "20151021-102909_679166714",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT"
+      },
+      "dateCreated": "Oct 21, 2015 10:29:09 AM",
+      "dateStarted": "Oct 21, 2015 10:48:10 AM",
+      "dateFinished": "Oct 21, 2015 10:48:10 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "AAS (Chapter 4): Predicting forest cover with decision trees",
+  "id": "2B2X6VXA5",
+  "angularObjects": {
+    "2BEGYQNZC": [],
+    "2BDWBPB55": [],
+    "2BCR665AU": [],
+    "2BDNPS2YA": [],
+    "2BAXC5ZPN": [],
+    "2BBXVQERM": [],
+    "2BENH2JMT": [],
+    "2BE3WUY3X": [],
+    "2BEVK9P7Z": [],
+    "2BEEJSCFC": [],
+    "2BEJM8SYT": [],
+    "2BBN5AA3M": [],
+    "2BD11QSCB": [],
+    "2BDQMJZ1E": []
+  },
+  "config": {
+    "looknfeel": "default"
+  },
+  "info": {}
+}

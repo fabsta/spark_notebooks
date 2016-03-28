@@ -2,7 +2,7 @@
   "paragraphs": [
     {
       "text": "%dep\nz.reset()\n\n// Add spark-csv package\nz.load(\"com.databricks:spark-csv_2.10:1.2.0\")",
-      "dateUpdated": "Mar 21, 2016 10:14:46 PM",
+      "dateUpdated": "Mar 22, 2016 5:35:56 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -26,17 +26,17 @@
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "res1: org.apache.zeppelin.spark.dep.Dependency \u003d org.apache.zeppelin.spark.dep.Dependency@eba07c3\n"
+        "msg": "res0: org.apache.zeppelin.spark.dep.Dependency \u003d org.apache.zeppelin.spark.dep.Dependency@50ef9510\n"
       },
       "dateCreated": "Mar 14, 2016 9:02:06 PM",
-      "dateStarted": "Mar 21, 2016 10:14:46 PM",
-      "dateFinished": "Mar 21, 2016 10:14:47 PM",
+      "dateStarted": "Mar 22, 2016 5:35:57 PM",
+      "dateFinished": "Mar 22, 2016 5:36:14 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md #Titanic example\n\ndata source: https://www.kaggle.com/c/titanic/data\nscript source: https://www.kaggle.com/c/titanic/details/getting-started-with-python",
-      "dateUpdated": "Mar 21, 2016 10:14:46 PM",
+      "dateUpdated": "Mar 22, 2016 5:35:57 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -63,14 +63,14 @@
         "msg": "\u003ch1\u003eTitanic example\u003c/h1\u003e\n\u003cp\u003edata source: https://www.kaggle.com/c/titanic/data\n\u003cbr  /\u003escript source: https://www.kaggle.com/c/titanic/details/getting-started-with-python\u003c/p\u003e\n"
       },
       "dateCreated": "Mar 21, 2016 5:48:06 PM",
-      "dateStarted": "Mar 21, 2016 10:14:46 PM",
-      "dateFinished": "Mar 21, 2016 10:14:46 PM",
+      "dateStarted": "Mar 22, 2016 5:35:57 PM",
+      "dateFinished": "Mar 22, 2016 5:36:00 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "val data_dir \u003d \"/Users/fabianschreiber/bin/data/kaggle_titanic/\"",
-      "dateUpdated": "Mar 21, 2016 10:14:46 PM",
+      "dateUpdated": "Mar 22, 2016 5:35:57 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -97,14 +97,14 @@
         "msg": "data_dir: String \u003d /Users/fabianschreiber/bin/data/kaggle_titanic/\n"
       },
       "dateCreated": "Mar 14, 2016 8:22:48 PM",
-      "dateStarted": "Mar 21, 2016 10:14:47 PM",
-      "dateFinished": "Mar 21, 2016 10:14:56 PM",
+      "dateStarted": "Mar 22, 2016 5:36:02 PM",
+      "dateFinished": "Mar 22, 2016 5:36:28 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "//val trainData \u003d sc.textFile(data_dir+\"/train.csv\")\nval trainData \u003d sqlContext.read.format(\"com.databricks.spark.csv\")\n                           .option(\"header\", \"true\")\n                           .option(\"inferSchema\", \"true\")\n                           .option(\"delimiter\",\",\")\n                           .load(data_dir+\"/train.csv\").cache\n                           \ntrainData.registerTempTable(\"train_data\")",
-      "dateUpdated": "Mar 21, 2016 10:14:47 PM",
+      "dateUpdated": "Mar 22, 2016 5:35:57 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -131,14 +131,14 @@
         "msg": "trainData: org.apache.spark.sql.DataFrame \u003d [PassengerId: int, Survived: int, Pclass: int, Name: string, Sex: string, Age: double, SibSp: int, Parch: int, Ticket: string, Fare: double, Cabin: string, Embarked: string]\n"
       },
       "dateCreated": "Mar 14, 2016 8:20:59 PM",
-      "dateStarted": "Mar 21, 2016 10:14:47 PM",
-      "dateFinished": "Mar 21, 2016 10:15:00 PM",
+      "dateStarted": "Mar 22, 2016 5:36:15 PM",
+      "dateFinished": "Mar 22, 2016 5:36:34 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%sql select Survived,count(Survived) from train_data group by Survived",
-      "dateUpdated": "Mar 21, 2016 10:14:47 PM",
+      "dateUpdated": "Mar 22, 2016 5:35:58 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -165,14 +165,14 @@
         "msg": "Survived\t_c1\n0\t549\n1\t342\n"
       },
       "dateCreated": "Mar 14, 2016 8:34:53 PM",
-      "dateStarted": "Mar 21, 2016 10:14:56 PM",
-      "dateFinished": "Mar 21, 2016 10:15:04 PM",
+      "dateStarted": "Mar 22, 2016 5:36:28 PM",
+      "dateFinished": "Mar 22, 2016 5:36:40 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "trainData.select(\"Survived\").collect",
-      "dateUpdated": "Mar 21, 2016 10:14:47 PM",
+      "dateUpdated": "Mar 22, 2016 5:35:58 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -199,14 +199,14 @@
         "msg": "res5: Array[org.apache.spark.sql.Row] \u003d Array([0], [1], [1], [1], [0], [0], [0], [0], [1], [1], [1], [1], [0], [0], [0], [1], [0], [1], [0], [1], [0], [1], [1], [1], [0], [1], [0], [0], [1], [0], [0], [1], [1], [0], [0], [0], [1], [0], [0], [1], [0], [0], [0], [1], [1], [0], [0], [1], [0], [0], [0], [0], [1], [1], [0], [1], [1], [0], [1], [0], [0], [1], [0], [0], [0], [1], [1], [0], [1], [0], [0], [0], [0], [0], [1], [0], [0], [0], [1], [1], [0], [1], [1], [0], [1], [1], [0], [0], [1], [0], [0], [0], [0], [0], [0], [0], [0], [1], [1], [0], [0], [0], [0], [0], [0], [0], [1], [1], [0], [1], [0], [0], [0], [0], [0], [0], [0], [0], [0], [0], [0], [0], [0], [1], [0], [1], [0], [1], [1], [0], [0], [0], [0], [1], [0], [0], [1], [0], [0], [0], [0], [1], [1], [0], [0], [0], [1], [0], [0], [0], [..."
       },
       "dateCreated": "Mar 14, 2016 8:48:01 PM",
-      "dateStarted": "Mar 21, 2016 10:15:00 PM",
-      "dateFinished": "Mar 21, 2016 10:15:04 PM",
+      "dateStarted": "Mar 22, 2016 5:36:35 PM",
+      "dateFinished": "Mar 22, 2016 5:36:41 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "\nval number_survived \u003d trainData.filter($\"Survived\" \u003d\u003d\u003d 1).count\nval number_passengers \u003d trainData.count\n\n\n\n//number_survived \u003d np.sum(data[0::,1].astype(np.float))\nval proportion_survivors \u003d (number_survived.toFloat / number_passengers)",
-      "dateUpdated": "Mar 21, 2016 10:14:47 PM",
+      "dateUpdated": "Mar 22, 2016 5:35:58 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -233,14 +233,14 @@
         "msg": "number_survived: Long \u003d 342\nnumber_passengers: Long \u003d 891\nproportion_survivors: Float \u003d 0.3838384\n"
       },
       "dateCreated": "Mar 15, 2016 9:22:27 AM",
-      "dateStarted": "Mar 21, 2016 10:15:04 PM",
-      "dateFinished": "Mar 21, 2016 10:15:06 PM",
+      "dateStarted": "Mar 22, 2016 5:36:40 PM",
+      "dateFinished": "Mar 22, 2016 5:36:43 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md ##Search gender column",
-      "dateUpdated": "Mar 21, 2016 10:14:47 PM",
+      "dateUpdated": "Mar 22, 2016 5:35:59 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -267,14 +267,14 @@
         "msg": "\u003ch2\u003eSearch gender column\u003c/h2\u003e\n"
       },
       "dateCreated": "Mar 15, 2016 9:24:06 AM",
-      "dateStarted": "Mar 21, 2016 10:14:47 PM",
-      "dateFinished": "Mar 21, 2016 10:14:47 PM",
+      "dateStarted": "Mar 22, 2016 5:36:00 PM",
+      "dateFinished": "Mar 22, 2016 5:36:00 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "\nval women_only_stats \u003d trainData.filter($\"Sex\" \u003d\u003d\u003d \"female\")\n                                            // This finds where all \n                                           // the elements in the gender\n                                           // column that equals “female”\nval men_only_stats \u003d trainData.filter($\"Sex\" !\u003d\u003d \"female\")\n                                            // This finds where all the \n                                           // elements do not equal \n                                           // female (i.e. male)\nprintln(\"women_only_stats: \"+women_only_stats.count+\" men_only_stats: \"+men_only_stats.count)                                           ",
-      "dateUpdated": "Mar 21, 2016 10:14:47 PM",
+      "dateUpdated": "Mar 22, 2016 5:35:59 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -301,14 +301,14 @@
         "msg": "women_only_stats: org.apache.spark.sql.DataFrame \u003d [PassengerId: int, Survived: int, Pclass: int, Name: string, Sex: string, Age: double, SibSp: int, Parch: int, Ticket: string, Fare: double, Cabin: string, Embarked: string]\nmen_only_stats: org.apache.spark.sql.DataFrame \u003d [PassengerId: int, Survived: int, Pclass: int, Name: string, Sex: string, Age: double, SibSp: int, Parch: int, Ticket: string, Fare: double, Cabin: string, Embarked: string]\nwomen_only_stats: 314 men_only_stats: 577\n"
       },
       "dateCreated": "Mar 21, 2016 10:21:40 AM",
-      "dateStarted": "Mar 21, 2016 10:15:05 PM",
-      "dateFinished": "Mar 21, 2016 10:15:07 PM",
+      "dateStarted": "Mar 22, 2016 5:36:42 PM",
+      "dateFinished": "Mar 22, 2016 5:36:45 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "// women on board that survived\nval proportion_women_survived \u003d (women_only_stats.filter($\"Survived\" \u003d\u003d\u003d1).count * 100 / women_only_stats.count).toFloat\n// man on board that survived\nval proportion_men_survived \u003d (men_only_stats.filter($\"Survived\" \u003d\u003d\u003d1).count * 100 / men_only_stats.count).toFloat\n\n\n// and then print it out\nprintln(\"Proportion of women who survived is \"+ proportion_women_survived)\nprintln(\"Proportion of men who survived is \" + proportion_men_survived)\n",
-      "dateUpdated": "Mar 21, 2016 10:14:47 PM",
+      "dateUpdated": "Mar 22, 2016 5:35:59 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -335,14 +335,14 @@
         "msg": "proportion_women_survived: Float \u003d 74.0\nproportion_men_survived: Float \u003d 18.0\nProportion of women who survived is 74.0\nProportion of men who survived is 18.0\n"
       },
       "dateCreated": "Mar 21, 2016 10:21:37 AM",
-      "dateStarted": "Mar 21, 2016 10:15:07 PM",
-      "dateFinished": "Mar 21, 2016 10:15:08 PM",
+      "dateStarted": "Mar 22, 2016 5:36:44 PM",
+      "dateFinished": "Mar 22, 2016 5:36:48 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md ## make predictions\n\nread in test file\nif female -\u003e survive else not",
-      "dateUpdated": "Mar 21, 2016 10:14:47 PM",
+      "dateUpdated": "Mar 22, 2016 5:35:59 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -369,14 +369,14 @@
         "msg": "\u003ch2\u003emake predictions\u003c/h2\u003e\n\u003cp\u003eread in test file\n\u003cbr  /\u003eif female -\u003e survive else not\u003c/p\u003e\n"
       },
       "dateCreated": "Mar 21, 2016 10:41:21 AM",
-      "dateStarted": "Mar 21, 2016 10:14:48 PM",
-      "dateFinished": "Mar 21, 2016 10:14:48 PM",
+      "dateStarted": "Mar 22, 2016 5:36:01 PM",
+      "dateFinished": "Mar 22, 2016 5:36:01 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "// open test file\nval testData \u003d sqlContext.read.format(\"com.databricks.spark.csv\")\n                           .option(\"header\", \"true\")\n                           .option(\"inferSchema\", \"true\")\n                           .option(\"delimiter\",\",\")\n                           .load(data_dir+\"/test.csv\").cache",
-      "dateUpdated": "Mar 21, 2016 10:14:48 PM",
+      "dateUpdated": "Mar 22, 2016 5:36:00 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -403,14 +403,14 @@
         "msg": "testData: org.apache.spark.sql.DataFrame \u003d [PassengerId: int, Pclass: int, Name: string, Sex: string, Age: double, SibSp: int, Parch: int, Ticket: string, Fare: double, Cabin: string, Embarked: string]\n"
       },
       "dateCreated": "Mar 21, 2016 10:44:59 AM",
-      "dateStarted": "Mar 21, 2016 10:15:08 PM",
-      "dateFinished": "Mar 21, 2016 10:15:09 PM",
+      "dateStarted": "Mar 22, 2016 5:36:45 PM",
+      "dateFinished": "Mar 22, 2016 5:36:49 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "// make prediction\nval prediction_df \u003d testData.withColumn(\"Survived\", when($\"Sex\" \u003d\u003d\u003d \"female\", 1).otherwise(0))\n\nprediction_df.select(\"PassengerId\",\"Survived\").write.format(\"com.databricks.spark.csv\").option(\"header\",\"true\").save(data_dir+\"/predictions.csv\")\n//println(prediction_df.collect)",
-      "dateUpdated": "Mar 21, 2016 10:14:48 PM",
+      "dateUpdated": "Mar 22, 2016 5:36:00 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -437,14 +437,14 @@
         "msg": "prediction_df: org.apache.spark.sql.DataFrame \u003d [PassengerId: int, Pclass: int, Name: string, Sex: string, Age: double, SibSp: int, Parch: int, Ticket: string, Fare: double, Cabin: string, Embarked: string, Survived: int]\njava.lang.RuntimeException: path /Users/fabianschreiber/bin/data/kaggle_titanic//predictions.csv already exists.\n\tat scala.sys.package$.error(package.scala:27)\n\tat com.databricks.spark.csv.DefaultSource.createRelation(DefaultSource.scala:157)\n\tat org.apache.spark.sql.execution.datasources.ResolvedDataSource$.apply(ResolvedDataSource.scala:170)\n\tat org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:146)\n\tat org.apache.spark.sql.DataFrameWriter.save(DataFrameWriter.scala:137)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:29)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:34)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:36)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:38)\n\tat $iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:40)\n\tat $iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:42)\n\tat $iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:44)\n\tat $iwC.\u003cinit\u003e(\u003cconsole\u003e:46)\n\tat \u003cinit\u003e(\u003cconsole\u003e:48)\n\tat .\u003cinit\u003e(\u003cconsole\u003e:52)\n\tat .\u003cclinit\u003e(\u003cconsole\u003e)\n\tat .\u003cinit\u003e(\u003cconsole\u003e:7)\n\tat .\u003cclinit\u003e(\u003cconsole\u003e)\n\tat $print(\u003cconsole\u003e)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:497)\n\tat org.apache.spark.repl.SparkIMain$ReadEvalPrint.call(SparkIMain.scala:1065)\n\tat org.apache.spark.repl.SparkIMain$Request.loadAndRun(SparkIMain.scala:1340)\n\tat org.apache.spark.repl.SparkIMain.loadAndRunReq$1(SparkIMain.scala:840)\n\tat org.apache.spark.repl.SparkIMain.interpret(SparkIMain.scala:871)\n\tat org.apache.spark.repl.SparkIMain.interpret(SparkIMain.scala:819)\n\tat org.apache.zeppelin.spark.SparkInterpreter.interpretInput(SparkInterpreter.java:709)\n\tat org.apache.zeppelin.spark.SparkInterpreter.interpret(SparkInterpreter.java:674)\n\tat org.apache.zeppelin.spark.SparkInterpreter.interpret(SparkInterpreter.java:667)\n\tat org.apache.zeppelin.interpreter.ClassloaderInterpreter.interpret(ClassloaderInterpreter.java:57)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:93)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:300)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:169)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:134)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\n\tat java.lang.Thread.run(Thread.java:745)\n\n"
       },
       "dateCreated": "Mar 21, 2016 10:45:03 AM",
-      "dateStarted": "Mar 21, 2016 10:15:08 PM",
-      "dateFinished": "Mar 21, 2016 10:15:10 PM",
+      "dateStarted": "Mar 22, 2016 5:36:48 PM",
+      "dateFinished": "Mar 22, 2016 5:36:50 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "%md #2nd part\n\nusing class, fare, and gender as a predictor",
-      "dateUpdated": "Mar 21, 2016 10:14:48 PM",
+      "dateUpdated": "Mar 22, 2016 5:36:00 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -471,13 +471,14 @@
         "msg": "\u003ch1\u003e2nd part\u003c/h1\u003e\n\u003cp\u003eusing class, fare, and gender as a predictor\u003c/p\u003e\n"
       },
       "dateCreated": "Mar 21, 2016 5:27:28 PM",
-      "dateStarted": "Mar 21, 2016 10:14:48 PM",
-      "dateFinished": "Mar 21, 2016 10:14:48 PM",
+      "dateStarted": "Mar 22, 2016 5:36:01 PM",
+      "dateFinished": "Mar 22, 2016 5:36:01 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "dateUpdated": "Mar 21, 2016 10:14:48 PM",
+      "text": "// So we add a ceiling\nval fare_ceiling \u003d 40\n// then modify the data in the Fare column to \u003d 39, if it is greater or equal to the ceiling\n//data[ data[0::,9].astype(np.float) \u003e\u003d fare_ceiling, 9 ] \u003d fare_ceiling - 1.0\n\nval adjusted_df \u003d testData.withColumn(\"adjustedFare\", when($\"Fare\" \u003e\u003d fare_ceiling, 39).otherwise($\"Fare\"))\n\n\nval fare_bracket_size \u003d 10\nval number_of_price_brackets \u003d fare_ceiling / fare_bracket_size\n\n// I know there were 1st, 2nd and 3rd classes on board\n// val number_of_classes \u003d 3\n\n// But it\u0027s better practice to calculate this from the data directly\n// Take the length of an array of unique values in column index 2\n// val number_of_classes \u003d len(np.unique(data[0::,2])) \nval number_of_classes \u003d testData.select($\"Pclass\").distinct.count.toInt\n\n// Initialize the survival table with all zeros\n// survival_table \u003d np.zeros((2, number_of_classes, number_of_price_brackets))",
+      "dateUpdated": "Mar 22, 2016 5:36:01 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -489,7 +490,8 @@
           "groups": [],
           "scatter": {}
         },
-        "enabled": true
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -499,16 +501,18 @@
       "id": "20160321-221359_2087323937",
       "result": {
         "code": "SUCCESS",
-        "type": "TEXT"
+        "type": "TEXT",
+        "msg": "fare_ceiling: Int \u003d 40\nadjusted_df: org.apache.spark.sql.DataFrame \u003d [PassengerId: int, Pclass: int, Name: string, Sex: string, Age: double, SibSp: int, Parch: int, Ticket: string, Fare: double, Cabin: string, Embarked: string, adjustedFare: double]\nfare_bracket_size: Int \u003d 10\nnumber_of_price_brackets: Int \u003d 4\nnumber_of_classes: Int \u003d 3\n"
       },
       "dateCreated": "Mar 21, 2016 10:13:59 PM",
-      "dateStarted": "Mar 21, 2016 10:15:10 PM",
-      "dateFinished": "Mar 21, 2016 10:15:10 PM",
+      "dateStarted": "Mar 22, 2016 5:36:49 PM",
+      "dateFinished": "Mar 22, 2016 5:36:54 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "dateUpdated": "Mar 21, 2016 10:14:48 PM",
+      "text": "val survival_matrix_men \u003d Array.ofDim[Float](number_of_classes, number_of_price_brackets)\nval survival_matrix_women \u003d Array.ofDim[Float](number_of_classes, number_of_price_brackets)\n\nfor( i \u003c- 0 until number_of_classes ){\n     for(j \u003c- 0 until number_of_price_brackets){\n         println( \"Value of i: \" + i + \" j: \" +j );\n         \n         val women_only_stats \u003d trainData.filter(($\"Sex\" \u003d\u003d\u003d \"female\") \u0026\u0026\n                        ($\"Pclass\" \u003d\u003d\u003d i+1) \u0026\u0026\n                        ($\"Fare\" \u003e\u003d j*fare_bracket_size ) \u0026\u0026\n                        ($\"Fare\" \u003c (j+1)*fare_bracket_size ))\n                        \n         val men_only_stats \u003d trainData.filter(($\"Sex\" \u003d\u003d\u003d \"male\") \u0026\u0026\n                        ($\"Pclass\" \u003d\u003d\u003d i+1) \u0026\u0026\n                        ($\"Fare\" \u003e\u003d j*fare_bracket_size ) \u0026\u0026\n                        ($\"Fare\" \u003c (j+1)*fare_bracket_size ))\n         // / women_only_stats.count                \n         \n         survival_matrix_women(i)(j) \u003d if(women_only_stats.count !\u003d 0) (women_only_stats.filter($\"Survived\" \u003d\u003d\u003d1).count * 100 / women_only_stats.count).toFloat else 0\n         survival_matrix_men(i)(j) \u003d if(men_only_stats.count !\u003d 0) (men_only_stats.filter($\"Survived\" \u003d\u003d\u003d1).count * 100 / men_only_stats.count).toFloat else 0\n\n                        \n         println(\"women only: \"+survival_matrix_men(i)(j) +\" men only: \"+survival_matrix_women(i)(j) )                \n      }\n}",
+      "dateUpdated": "Mar 22, 2016 5:36:01 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -520,7 +524,76 @@
           "groups": [],
           "scatter": {}
         },
-        "enabled": true
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1458648999028_-1323824690",
+      "id": "20160322-131639_521232596",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "survival_matrix_men: Array[Array[Float]] \u003d Array(Array(0.0, 0.0, 0.0, 0.0), Array(0.0, 0.0, 0.0, 0.0), Array(0.0, 0.0, 0.0, 0.0))\nsurvival_matrix_women: Array[Array[Float]] \u003d Array(Array(0.0, 0.0, 0.0, 0.0), Array(0.0, 0.0, 0.0, 0.0), Array(0.0, 0.0, 0.0, 0.0))\nValue of i: 0 j: 0\nwomen only: 0.0 men only: 0.0\nValue of i: 0 j: 1\nwomen only: 0.0 men only: 0.0\nValue of i: 0 j: 2\nwomen only: 40.0 men only: 83.0\nValue of i: 0 j: 3\nwomen only: 45.0 men only: 100.0\nValue of i: 1 j: 0\nwomen only: 0.0 men only: 0.0\nValue of i: 1 j: 1\nwomen only: 15.0 men only: 91.0\nValue of i: 1 j: 2\nwomen only: 16.0 men only: 90.0\nValue of i: 1 j: 3\nwomen only: 37.0 men only: 100.0\nValue of i: 2 j: 0\nwomen only: 11.0 men only: 59.0\nValue of i: 2 j: 1\nwomen only: 23.0 men only: 58.0\nValue of i: 2 j: 2\nwomen only: 12.0 men only: 33.0\nValue of i: 2 j: 3\nwomen only: 10.0 men only: 18.0\n"
+      },
+      "dateCreated": "Mar 22, 2016 1:16:39 PM",
+      "dateStarted": "Mar 22, 2016 5:36:51 PM",
+      "dateFinished": "Mar 22, 2016 5:37:05 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "val prediction_score \u003d udf( (sex: String, pclass: String, fare : String) \u003d\u003e { \n    if(sex \u003d\u003d\u003d \"female\"){\n        \n    }\n    else{\n        \n    }\n    \n} )",
+      "dateUpdated": "Mar 22, 2016 5:36:01 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1458649004447_1616041656",
+      "id": "20160322-131644_972555843",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "\u003cconsole\u003e:22: error: value \u003d\u003d\u003d is not a member of String\n           if(sex \u003d\u003d\u003d \"female\"){\n                  ^\n"
+      },
+      "dateCreated": "Mar 22, 2016 1:16:44 PM",
+      "dateStarted": "Mar 22, 2016 5:36:54 PM",
+      "dateFinished": "Mar 22, 2016 5:37:05 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "\n//use withColumn method to add a new column called newColName\nval predicted_df \u003d testData.withColumn(\"Survived\", prediction_score($\"Sex\", $\"Pclass\",$\"Fare\")).select(\"PassengerId\",\"Survived\")",
+      "dateUpdated": "Mar 22, 2016 5:36:02 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
       },
       "settings": {
         "params": {},
@@ -529,12 +602,79 @@
       "jobName": "paragraph_1458594845510_-226094752",
       "id": "20160321-221405_2094546955",
       "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "\u003cconsole\u003e:27: error: not found: value prediction_score\n       val predicted_df \u003d testData.withColumn(\"Survived\", prediction_score($\"Sex\", $\"Pclass\",$\"Fare\")).select(\"PassengerId\",\"Survived\")\n                                                          ^\n"
+      },
+      "dateCreated": "Mar 21, 2016 10:14:05 PM",
+      "dateStarted": "Mar 22, 2016 5:37:05 PM",
+      "dateFinished": "Mar 22, 2016 5:37:05 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "df.withColumn(\"newColName\", getConcatenated($\"col1\", $\"col2\")).select(\"newColName\", \"col1\", \"col2\")",
+      "dateUpdated": "Mar 22, 2016 5:36:02 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1458597919324_1275742193",
+      "id": "20160321-230519_319233408",
+      "result": {
+        "code": "ERROR",
+        "type": "TEXT",
+        "msg": "\u003cconsole\u003e:22: error: not found: value df\n              df.withColumn(\"newColName\", getConcatenated($\"col1\", $\"col2\")).select(\"newColName\", \"col1\", \"col2\")\n              ^\n"
+      },
+      "dateCreated": "Mar 21, 2016 11:05:19 PM",
+      "dateStarted": "Mar 22, 2016 5:37:05 PM",
+      "dateFinished": "Mar 22, 2016 5:37:05 PM",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "dateUpdated": "Mar 22, 2016 5:36:02 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1458597922952_-638475",
+      "id": "20160321-230522_1469842493",
+      "result": {
         "code": "SUCCESS",
         "type": "TEXT"
       },
-      "dateCreated": "Mar 21, 2016 10:14:05 PM",
-      "dateStarted": "Mar 21, 2016 10:15:10 PM",
-      "dateFinished": "Mar 21, 2016 10:15:10 PM",
+      "dateCreated": "Mar 21, 2016 11:05:22 PM",
+      "dateStarted": "Mar 22, 2016 5:37:05 PM",
+      "dateFinished": "Mar 22, 2016 5:37:05 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     }

@@ -2,7 +2,7 @@
   "paragraphs": [
     {
       "text": "%md #Recommending music\n\n// source code is here: https://github.com/sryza/aas\n\n",
-      "dateUpdated": "Mar 22, 2016 9:41:57 PM",
+      "dateUpdated": "Mar 28, 2016 5:30:02 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -25,18 +25,18 @@
       "id": "20151021-092204_1812220922",
       "result": {
         "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": ""
+        "type": "HTML",
+        "msg": "\u003ch1\u003eRecommending music\u003c/h1\u003e\n\u003cp\u003e// source code is here: https://github.com/sryza/aas\u003c/p\u003e\n"
       },
       "dateCreated": "Oct 21, 2015 9:22:04 AM",
-      "dateStarted": "Mar 22, 2016 9:32:44 PM",
-      "dateFinished": "Mar 22, 2016 9:33:16 PM",
+      "dateStarted": "Mar 28, 2016 5:30:02 PM",
+      "dateFinished": "Mar 28, 2016 5:30:04 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "val base \u003d \"/Users/fabianschreiber/bin/data/adv_analytics/\"\n// full dataset is here: http://www-etud.iro.umontreal.ca/~bergstrj/audioscrobbler_data.html",
-      "dateUpdated": "Mar 22, 2016 9:48:28 PM",
+      "text": "val data_dir \u003d \"/Users/fabianschreiber/Box Sync/projects/zeppelin_data/adv_analytics/\"\n// full dataset is here: http://www-etud.iro.umontreal.ca/~bergstrj/audioscrobbler_data.html",
+      "dateUpdated": "Mar 28, 2016 5:31:41 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -60,11 +60,11 @@
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "base: String \u003d /Users/fabianschreiber/bin/data/adv_analytics/\n"
+        "msg": "data_dir: String \u003d /Users/fabianschreiber/Box Sync/projects/zeppelin_data/adv_analytics/\n"
       },
       "dateCreated": "Mar 22, 2016 9:38:51 PM",
-      "dateStarted": "Mar 22, 2016 9:48:28 PM",
-      "dateFinished": "Mar 22, 2016 9:48:28 PM",
+      "dateStarted": "Mar 28, 2016 5:31:41 PM",
+      "dateFinished": "Mar 28, 2016 5:31:41 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -104,7 +104,7 @@
     },
     {
       "text": "import scala.collection.Map\nimport scala.collection.mutable.ArrayBuffer\nimport scala.util.Random\n\nimport org.apache.spark.{SparkConf, SparkContext}\nimport org.apache.spark.SparkContext._\nimport org.apache.spark.broadcast.Broadcast\nimport org.apache.spark.mllib.recommendation._\nimport org.apache.spark.rdd.RDD",
-      "dateUpdated": "Mar 22, 2016 9:32:44 PM",
+      "dateUpdated": "Mar 28, 2016 5:30:58 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -131,8 +131,8 @@
         "msg": "import scala.collection.Map\nimport scala.collection.mutable.ArrayBuffer\nimport scala.util.Random\nimport org.apache.spark.{SparkConf, SparkContext}\nimport org.apache.spark.SparkContext._\nimport org.apache.spark.broadcast.Broadcast\nimport org.apache.spark.mllib.recommendation._\nimport org.apache.spark.rdd.RDD\n"
       },
       "dateCreated": "Feb 22, 2016 6:34:25 PM",
-      "dateStarted": "Mar 22, 2016 9:32:48 PM",
-      "dateFinished": "Mar 22, 2016 9:33:20 PM",
+      "dateStarted": "Mar 28, 2016 5:30:58 PM",
+      "dateFinished": "Mar 28, 2016 5:31:02 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -171,8 +171,8 @@
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "val rawUserArtistData \u003d sc.textFile(\"/Users/fabianschreiber/Documents/playground/spark_aas_data/user_artist_data_small.txt\")\n//1000002 1 55\n//1000002 1000006 33",
-      "dateUpdated": "Mar 22, 2016 9:32:45 PM",
+      "text": "val rawUserArtistData \u003d sc.textFile(data_dir+\"/user_artist_data_small.txt\")\n//1000002 1 55\n//1000002 1000006 33",
+      "dateUpdated": "Mar 28, 2016 5:31:52 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -196,17 +196,17 @@
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "rawUserArtistData: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[1] at textFile at \u003cconsole\u003e:35\n"
+        "msg": "rawUserArtistData: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[1] at textFile at \u003cconsole\u003e:37\n"
       },
       "dateCreated": "Feb 22, 2016 6:41:49 PM",
-      "dateStarted": "Mar 22, 2016 9:33:17 PM",
-      "dateFinished": "Mar 22, 2016 9:33:21 PM",
+      "dateStarted": "Mar 28, 2016 5:31:52 PM",
+      "dateFinished": "Mar 28, 2016 5:31:54 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "rawUserArtistData.map(_.split(\u0027 \u0027)(0).toDouble).stats()",
-      "dateUpdated": "Mar 22, 2016 9:32:45 PM",
+      "dateUpdated": "Mar 28, 2016 5:32:02 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -233,14 +233,14 @@
         "msg": "res11: org.apache.spark.util.StatCounter \u003d (count: 10000, mean: 1000036.970200, stdev: 21.921061, max: 1000072.000000, min: 1000002.000000)\n"
       },
       "dateCreated": "Feb 22, 2016 6:43:26 PM",
-      "dateStarted": "Mar 22, 2016 9:33:20 PM",
-      "dateFinished": "Mar 22, 2016 9:33:24 PM",
+      "dateStarted": "Mar 28, 2016 5:32:02 PM",
+      "dateFinished": "Mar 28, 2016 5:32:06 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "def buildArtistByID(rawArtistData: RDD[String]) \u003d\n    rawArtistData.flatMap { line \u003d\u003e\n    //span() splits the line by its first tab by consuming characters that aren’t tabs\n    // assigns first portion to id, remaining part (with tabs removed) to name\n    // some lines are corrupt, so map can\u0027t be used (requires exactly one value to be returned per item)\n      val (id, name) \u003d line.span(_ !\u003d \u0027\\t\u0027)\n      if (name.isEmpty) {\n        None\n      } else {\n        try {\n          Some((id.toInt, name.trim))\n        } catch {\n          case e: NumberFormatException \u003d\u003e None\n        }\n      }\n    }",
-      "dateUpdated": "Mar 22, 2016 9:32:45 PM",
+      "dateUpdated": "Mar 28, 2016 5:32:08 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -267,14 +267,14 @@
         "msg": "buildArtistByID: (rawArtistData: org.apache.spark.rdd.RDD[String])org.apache.spark.rdd.RDD[(Int, String)]\n"
       },
       "dateCreated": "Oct 21, 2015 9:24:28 AM",
-      "dateStarted": "Mar 22, 2016 9:33:21 PM",
-      "dateFinished": "Mar 22, 2016 9:33:25 PM",
+      "dateStarted": "Mar 28, 2016 5:32:08 PM",
+      "dateFinished": "Mar 28, 2016 5:32:10 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "def buildArtistAlias(rawArtistAlias: RDD[String]): Map[Int,Int] \u003d\n    rawArtistAlias.flatMap { line \u003d\u003e\n      val tokens \u003d line.split(\u0027\\t\u0027)\n      if (tokens(0).isEmpty) {\n        None\n      } else {\n        Some((tokens(0).toInt, tokens(1).toInt))\n      }\n    }.collectAsMap()",
-      "dateUpdated": "Mar 22, 2016 9:32:45 PM",
+      "dateUpdated": "Mar 28, 2016 5:32:11 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -301,14 +301,14 @@
         "msg": "buildArtistAlias: (rawArtistAlias: org.apache.spark.rdd.RDD[String])scala.collection.Map[Int,Int]\n"
       },
       "dateCreated": "Oct 21, 2015 9:25:11 AM",
-      "dateStarted": "Mar 22, 2016 9:33:25 PM",
-      "dateFinished": "Mar 22, 2016 9:33:26 PM",
+      "dateStarted": "Mar 28, 2016 5:32:11 PM",
+      "dateFinished": "Mar 28, 2016 5:32:12 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "def preparation(\n      rawUserArtistData: RDD[String],\n      rawArtistData: RDD[String],\n      rawArtistAlias: RDD[String]) \u003d {\n    val userIDStats \u003d rawUserArtistData.map(_.split(\u0027 \u0027)(0).toDouble).stats()\n    val itemIDStats \u003d rawUserArtistData.map(_.split(\u0027 \u0027)(1).toDouble).stats()\n    println(userIDStats)\n    println(itemIDStats)\n\n    val artistByID \u003d buildArtistByID(rawArtistData)\n    val artistAlias \u003d buildArtistAlias(rawArtistAlias)\n\n    val (badID, goodID) \u003d artistAlias.head\n    println(artistByID.lookup(badID) + \" -\u003e \" + artistByID.lookup(goodID))\n  }",
-      "dateUpdated": "Mar 22, 2016 9:32:45 PM",
+      "dateUpdated": "Mar 28, 2016 5:32:16 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -335,14 +335,14 @@
         "msg": "preparation: (rawUserArtistData: org.apache.spark.rdd.RDD[String], rawArtistData: org.apache.spark.rdd.RDD[String], rawArtistAlias: org.apache.spark.rdd.RDD[String])Unit\n"
       },
       "dateCreated": "Oct 21, 2015 9:25:29 AM",
-      "dateStarted": "Mar 22, 2016 9:33:26 PM",
-      "dateFinished": "Mar 22, 2016 9:33:27 PM",
+      "dateStarted": "Mar 28, 2016 5:32:16 PM",
+      "dateFinished": "Mar 28, 2016 5:32:17 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "def buildRatings(\n      rawUserArtistData: RDD[String],\n      bArtistAlias: Broadcast[Map[Int,Int]]) \u003d {\n    rawUserArtistData.map { line \u003d\u003e\n      val Array(userID, artistID, count) \u003d line.split(\u0027 \u0027).map(_.toInt)\n      val finalArtistID \u003d bArtistAlias.value.getOrElse(artistID, artistID)\n      Rating(userID, finalArtistID, count)\n    }\n  }",
-      "dateUpdated": "Mar 22, 2016 9:32:45 PM",
+      "dateUpdated": "Mar 28, 2016 5:32:22 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -369,14 +369,14 @@
         "msg": "buildRatings: (rawUserArtistData: org.apache.spark.rdd.RDD[String], bArtistAlias: org.apache.spark.broadcast.Broadcast[scala.collection.Map[Int,Int]])org.apache.spark.rdd.RDD[org.apache.spark.mllib.recommendation.Rating]\n"
       },
       "dateCreated": "Oct 21, 2015 9:26:26 AM",
-      "dateStarted": "Mar 22, 2016 9:33:26 PM",
-      "dateFinished": "Mar 22, 2016 9:33:28 PM",
+      "dateStarted": "Mar 28, 2016 5:32:22 PM",
+      "dateFinished": "Mar 28, 2016 5:32:23 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "def unpersist(model: MatrixFactorizationModel): Unit \u003d {\n    // At the moment, it\u0027s necessary to manually unpersist the RDDs inside the model\n    // when done with it in order to make sure they are promptly uncached\n    model.userFeatures.unpersist()\n    model.productFeatures.unpersist()\n  }\n",
-      "dateUpdated": "Mar 22, 2016 9:32:45 PM",
+      "dateUpdated": "Mar 28, 2016 5:32:25 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -403,14 +403,14 @@
         "msg": "unpersist: (model: org.apache.spark.mllib.recommendation.MatrixFactorizationModel)Unit\n"
       },
       "dateCreated": "Oct 21, 2015 9:30:10 AM",
-      "dateStarted": "Mar 22, 2016 9:33:27 PM",
-      "dateFinished": "Mar 22, 2016 9:33:28 PM",
+      "dateStarted": "Mar 28, 2016 5:32:26 PM",
+      "dateFinished": "Mar 28, 2016 5:32:26 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "def model(\n      sc: SparkContext,\n      rawUserArtistData: RDD[String],\n      rawArtistData: RDD[String],\n      rawArtistAlias: RDD[String]): Unit \u003d {\n\n    val bArtistAlias \u003d sc.broadcast(buildArtistAlias(rawArtistAlias))\n\n    val trainData \u003d buildRatings(rawUserArtistData, bArtistAlias).cache()\n\n    val model \u003d ALS.trainImplicit(trainData, 10, 5, 0.01, 1.0)\n\n    trainData.unpersist()\n\n    println(model.userFeatures.mapValues(_.mkString(\", \")).first())\n\n    val userID \u003d 2093760\n    val recommendations \u003d model.recommendProducts(userID, 5)\n    recommendations.foreach(println)\n    val recommendedProductIDs \u003d recommendations.map(_.product).toSet\n\n    val rawArtistsForUser \u003d rawUserArtistData.map(_.split(\u0027 \u0027)).\n      filter { case Array(user,_,_) \u003d\u003e user.toInt \u003d\u003d userID }\n\n    val existingProducts \u003d rawArtistsForUser.map { case Array(_,artist,_) \u003d\u003e artist.toInt }.\n      collect().toSet\n\n    val artistByID \u003d buildArtistByID(rawArtistData)\n\n    artistByID.filter { case (id, name) \u003d\u003e existingProducts.contains(id) }.\n      values.collect().foreach(println)\n    artistByID.filter { case (id, name) \u003d\u003e recommendedProductIDs.contains(id) }.\n      values.collect().foreach(println)\n\n    unpersist(model)\n  }",
-      "dateUpdated": "Mar 22, 2016 9:32:45 PM",
+      "dateUpdated": "Mar 28, 2016 5:32:32 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -437,14 +437,14 @@
         "msg": "model: (sc: org.apache.spark.SparkContext, rawUserArtistData: org.apache.spark.rdd.RDD[String], rawArtistData: org.apache.spark.rdd.RDD[String], rawArtistAlias: org.apache.spark.rdd.RDD[String])Unit\n"
       },
       "dateCreated": "Oct 21, 2015 9:33:24 AM",
-      "dateStarted": "Mar 22, 2016 9:33:28 PM",
-      "dateFinished": "Mar 22, 2016 9:33:29 PM",
+      "dateStarted": "Mar 28, 2016 5:32:32 PM",
+      "dateFinished": "Mar 28, 2016 5:32:34 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "def areaUnderCurve(\n      positiveData: RDD[Rating],\n      bAllItemIDs: Broadcast[Array[Int]],\n      predictFunction: (RDD[(Int,Int)] \u003d\u003e RDD[Rating])) \u003d {\n    // What this actually computes is AUC, per user. The result is actually something\n    // that might be called \"mean AUC\".\n\n    // Take held-out data as the \"positive\", and map to tuples\n    val positiveUserProducts \u003d positiveData.map(r \u003d\u003e (r.user, r.product))\n    // Make predictions for each of them, including a numeric score, and gather by user\n    val positivePredictions \u003d predictFunction(positiveUserProducts).groupBy(_.user)\n\n    // BinaryClassificationMetrics.areaUnderROC is not used here since there are really lots of\n    // small AUC problems, and it would be inefficient, when a direct computation is available.\n\n    // Create a set of \"negative\" products for each user. These are randomly chosen\n    // from among all of the other items, excluding those that are \"positive\" for the user.\n    val negativeUserProducts \u003d positiveUserProducts.groupByKey().mapPartitions {\n      // mapPartitions operates on many (user,positive-items) pairs at once\n      userIDAndPosItemIDs \u003d\u003e {\n        // Init an RNG and the item IDs set once for partition\n        val random \u003d new Random()\n        val allItemIDs \u003d bAllItemIDs.value\n        userIDAndPosItemIDs.map { case (userID, posItemIDs) \u003d\u003e\n          val posItemIDSet \u003d posItemIDs.toSet\n          val negative \u003d new ArrayBuffer[Int]()\n          var i \u003d 0\n          // Keep about as many negative examples per user as positive.\n          // Duplicates are OK\n          while (i \u003c allItemIDs.size \u0026\u0026 negative.size \u003c posItemIDSet.size) {\n            val itemID \u003d allItemIDs(random.nextInt(allItemIDs.size))\n            if (!posItemIDSet.contains(itemID)) {\n              negative +\u003d itemID\n            }\n            i +\u003d 1\n          }\n          // Result is a collection of (user,negative-item) tuples\n          negative.map(itemID \u003d\u003e (userID, itemID))\n        }\n      }\n    }.flatMap(t \u003d\u003e t)\n    // flatMap breaks the collections above down into one big set of tuples\n\n    // Make predictions on the rest:\n    val negativePredictions \u003d predictFunction(negativeUserProducts).groupBy(_.user)\n\n    // Join positive and negative by user\n    positivePredictions.join(negativePredictions).values.map {\n      case (positiveRatings, negativeRatings) \u003d\u003e\n        // AUC may be viewed as the probability that a random positive item scores\n        // higher than a random negative one. Here the proportion of all positive-negative\n        // pairs that are correctly ranked is computed. The result is equal to the AUC metric.\n        var correct \u003d 0L\n        var total \u003d 0L\n        // For each pairing,\n        for (positive \u003c- positiveRatings;\n             negative \u003c- negativeRatings) {\n          // Count the correctly-ranked pairs\n          if (positive.rating \u003e negative.rating) {\n            correct +\u003d 1\n          }\n          total +\u003d 1\n        }\n        // Return AUC: fraction of pairs ranked correctly\n        correct.toDouble / total\n    }.mean() // Return mean AUC over users\n  }",
-      "dateUpdated": "Mar 22, 2016 9:32:46 PM",
+      "dateUpdated": "Mar 28, 2016 5:32:36 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -471,48 +471,14 @@
         "msg": "areaUnderCurve: (positiveData: org.apache.spark.rdd.RDD[org.apache.spark.mllib.recommendation.Rating], bAllItemIDs: org.apache.spark.broadcast.Broadcast[Array[Int]], predictFunction: org.apache.spark.rdd.RDD[(Int, Int)] \u003d\u003e org.apache.spark.rdd.RDD[org.apache.spark.mllib.recommendation.Rating])Double\n"
       },
       "dateCreated": "Oct 21, 2015 9:33:38 AM",
-      "dateStarted": "Mar 22, 2016 9:33:31 PM",
-      "dateFinished": "Mar 22, 2016 9:33:35 PM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "def evaluate(\n      sc: SparkContext,\n      rawUserArtistData: RDD[String],\n      rawArtistAlias: RDD[String]): Unit \u003d {\n    val bArtistAlias \u003d sc.broadcast(buildArtistAlias(rawArtistAlias))\n\n    val allData \u003d buildRatings(rawUserArtistData, bArtistAlias)\n    val Array(trainData, cvData) \u003d allData.randomSplit(Array(0.9, 0.1))\n    trainData.cache()\n    cvData.cache()\n\n    val allItemIDs \u003d allData.map(_.product).distinct().collect()\n    val bAllItemIDs \u003d sc.broadcast(allItemIDs)\n\n    val mostListenedAUC \u003d areaUnderCurve(cvData, bAllItemIDs, predictMostListened(sc, trainData))\n    println(mostListenedAUC)\n\n    val evaluations \u003d\n      for (rank   \u003c- Array(10,  50);\n           lambda \u003c- Array(1.0, 0.0001);\n           alpha  \u003c- Array(1.0, 40.0))\n      yield {\n        val model \u003d ALS.trainImplicit(trainData, rank, 10, lambda, alpha)\n        val auc \u003d areaUnderCurve(cvData, bAllItemIDs, model.predict)\n        unpersist(model)\n        ((rank, lambda, alpha), auc)\n      }\n\n    evaluations.sortBy(_._2).reverse.foreach(println)\n\n    trainData.unpersist()\n    cvData.unpersist()\n  }",
-      "dateUpdated": "Mar 22, 2016 9:35:28 PM",
-      "config": {
-        "colWidth": 12.0,
-        "graph": {
-          "mode": "table",
-          "height": 300.0,
-          "optionOpen": false,
-          "keys": [],
-          "values": [],
-          "groups": [],
-          "scatter": {}
-        },
-        "enabled": true,
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "jobName": "paragraph_1445412999314_1440111806",
-      "id": "20151021-093639_70531959",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "evaluate: (sc: org.apache.spark.SparkContext, rawUserArtistData: org.apache.spark.rdd.RDD[String], rawArtistAlias: org.apache.spark.rdd.RDD[String])Unit\n"
-      },
-      "dateCreated": "Oct 21, 2015 9:36:39 AM",
-      "dateStarted": "Mar 22, 2016 9:35:28 PM",
-      "dateFinished": "Mar 22, 2016 9:35:29 PM",
+      "dateStarted": "Mar 28, 2016 5:32:37 PM",
+      "dateFinished": "Mar 28, 2016 5:32:38 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "def predictMostListened(sc: SparkContext, train: RDD[Rating])(allData: RDD[(Int,Int)]) \u003d {\n    val bListenCount \u003d\n      sc.broadcast(train.map(r \u003d\u003e (r.product, r.rating)).reduceByKey(_ + _).collectAsMap())\n    allData.map { case (user, product) \u003d\u003e\n      Rating(user, product, bListenCount.value.getOrElse(product, 0.0))\n    }\n  }",
-      "dateUpdated": "Mar 22, 2016 9:32:45 PM",
+      "dateUpdated": "Mar 28, 2016 5:32:57 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -539,14 +505,48 @@
         "msg": "predictMostListened: (sc: org.apache.spark.SparkContext, train: org.apache.spark.rdd.RDD[org.apache.spark.mllib.recommendation.Rating])(allData: org.apache.spark.rdd.RDD[(Int, Int)])org.apache.spark.rdd.RDD[org.apache.spark.mllib.recommendation.Rating]\n"
       },
       "dateCreated": "Oct 21, 2015 9:29:47 AM",
-      "dateStarted": "Mar 22, 2016 9:33:29 PM",
-      "dateFinished": "Mar 22, 2016 9:33:30 PM",
+      "dateStarted": "Mar 28, 2016 5:32:57 PM",
+      "dateFinished": "Mar 28, 2016 5:32:58 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "import scala.collection.Map\nimport scala.collection.mutable.ArrayBuffer\nimport scala.util.Random\n\nimport org.apache.spark.{SparkConf, SparkContext}\nimport org.apache.spark.SparkContext._\nimport org.apache.spark.broadcast.Broadcast\nimport org.apache.spark.mllib.recommendation._\nimport org.apache.spark.rdd.RDD\n\n\nval rawUserArtistData \u003d sc.textFile(base + \"user_artist_data_small.txt\")\nval rawArtistData \u003d sc.textFile(base + \"artist_data_small.txt\")\nval rawArtistAlias \u003d sc.textFile(base + \"artist_alias.txt\")\n\npreparation(rawUserArtistData, rawArtistData, rawArtistAlias)\nmodel(sc, rawUserArtistData, rawArtistData, rawArtistAlias)\n//evaluate(sc, rawUserArtistData, rawArtistAlias)\nrecommend(sc, rawUserArtistData, rawArtistData, rawArtistAlias)\n",
-      "dateUpdated": "Mar 22, 2016 9:48:39 PM",
+      "text": "def evaluate(\n      sc: SparkContext,\n      rawUserArtistData: RDD[String],\n      rawArtistAlias: RDD[String]): Unit \u003d {\n    val bArtistAlias \u003d sc.broadcast(buildArtistAlias(rawArtistAlias))\n\n    val allData \u003d buildRatings(rawUserArtistData, bArtistAlias)\n    val Array(trainData, cvData) \u003d allData.randomSplit(Array(0.9, 0.1))\n    trainData.cache()\n    cvData.cache()\n\n    val allItemIDs \u003d allData.map(_.product).distinct().collect()\n    val bAllItemIDs \u003d sc.broadcast(allItemIDs)\n\n    val mostListenedAUC \u003d areaUnderCurve(cvData, bAllItemIDs, predictMostListened(sc, trainData))\n    println(mostListenedAUC)\n\n    val evaluations \u003d\n      for (rank   \u003c- Array(10,  50);\n           lambda \u003c- Array(1.0, 0.0001);\n           alpha  \u003c- Array(1.0, 40.0))\n      yield {\n        val model \u003d ALS.trainImplicit(trainData, rank, 10, lambda, alpha)\n        val auc \u003d areaUnderCurve(cvData, bAllItemIDs, model.predict)\n        unpersist(model)\n        ((rank, lambda, alpha), auc)\n      }\n\n    evaluations.sortBy(_._2).reverse.foreach(println)\n\n    trainData.unpersist()\n    cvData.unpersist()\n  }",
+      "dateUpdated": "Mar 28, 2016 5:33:00 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1445412999314_1440111806",
+      "id": "20151021-093639_70531959",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "evaluate: (sc: org.apache.spark.SparkContext, rawUserArtistData: org.apache.spark.rdd.RDD[String], rawArtistAlias: org.apache.spark.rdd.RDD[String])Unit\n"
+      },
+      "dateCreated": "Oct 21, 2015 9:36:39 AM",
+      "dateStarted": "Mar 28, 2016 5:33:00 PM",
+      "dateFinished": "Mar 28, 2016 5:33:01 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "import scala.collection.Map\nimport scala.collection.mutable.ArrayBuffer\nimport scala.util.Random\n\nimport org.apache.spark.{SparkConf, SparkContext}\nimport org.apache.spark.SparkContext._\nimport org.apache.spark.broadcast.Broadcast\nimport org.apache.spark.mllib.recommendation._\nimport org.apache.spark.rdd.RDD\n\n\nval rawUserArtistData \u003d sc.textFile(data_dir + \"/user_artist_data_small.txt\")\nval rawArtistData \u003d sc.textFile(data_dir + \"/artist_data_small.txt\")\nval rawArtistAlias \u003d sc.textFile(data_dir + \"/artist_alias.txt\")\n\npreparation(rawUserArtistData, rawArtistData, rawArtistAlias)\nmodel(sc, rawUserArtistData, rawArtistData, rawArtistAlias)\n//evaluate(sc, rawUserArtistData, rawArtistAlias)\nrecommend(sc, rawUserArtistData, rawArtistData, rawArtistAlias)\n",
+      "dateUpdated": "Mar 28, 2016 5:33:36 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -570,11 +570,11 @@
       "result": {
         "code": "ERROR",
         "type": "TEXT",
-        "msg": "import scala.collection.Map\nimport scala.collection.mutable.ArrayBuffer\nimport scala.util.Random\nimport org.apache.spark.{SparkConf, SparkContext}\nimport org.apache.spark.SparkContext._\nimport org.apache.spark.broadcast.Broadcast\nimport org.apache.spark.mllib.recommendation._\nimport org.apache.spark.rdd.RDD\nrawUserArtistData: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[21] at textFile at \u003cconsole\u003e:75\nrawArtistData: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[23] at textFile at \u003cconsole\u003e:73\nrawArtistAlias: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[25] at textFile at \u003cconsole\u003e:73\n(count: 10000, mean: 1000036.970200, stdev: 21.921061, max: 1000072.000000, min: 1000002.000000)\n(count: 10000, mean: 816436.781400, stdev: 666145.626300, max: 10783758.000000, min: 1.000000)\nWrappedArray() -\u003e WrappedArray()\n(1000020,0.36070123314857483, -0.35203373432159424, -0.15813282132148743, 0.0631522536277771, 0.30298200249671936, -0.053050264716148376, 0.1891569197177887, -0.07732508331537247, -0.8515145182609558, -0.11833543330430984)\njava.util.NoSuchElementException: next on empty iterator\n\tat scala.collection.Iterator$$anon$2.next(Iterator.scala:39)\n\tat scala.collection.Iterator$$anon$2.next(Iterator.scala:37)\n\tat scala.collection.IndexedSeqLike$Elements.next(IndexedSeqLike.scala:64)\n\tat scala.collection.IterableLike$class.head(IterableLike.scala:91)\n\tat scala.collection.mutable.ArrayBuffer.scala$collection$IndexedSeqOptimized$$super$head(ArrayBuffer.scala:47)\n\tat scala.collection.IndexedSeqOptimized$class.head(IndexedSeqOptimized.scala:120)\n\tat scala.collection.mutable.ArrayBuffer.head(ArrayBuffer.scala:47)\n\tat org.apache.spark.mllib.recommendation.MatrixFactorizationModel.recommendProducts(MatrixFactorizationModel.scala:168)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.model(\u003cconsole\u003e:62)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:92)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:97)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:99)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:101)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:103)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:105)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:107)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:109)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:111)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:113)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:115)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:117)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:119)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:121)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:123)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:125)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:127)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:129)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:131)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:133)\n\tat $iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:135)\n\tat $iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:137)\n\tat $iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:139)\n\tat $iwC.\u003cinit\u003e(\u003cconsole\u003e:141)\n\tat \u003cinit\u003e(\u003cconsole\u003e:143)\n\tat .\u003cinit\u003e(\u003cconsole\u003e:147)\n\tat .\u003cclinit\u003e(\u003cconsole\u003e)\n\tat .\u003cinit\u003e(\u003cconsole\u003e:7)\n\tat .\u003cclinit\u003e(\u003cconsole\u003e)\n\tat $print(\u003cconsole\u003e)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:497)\n\tat org.apache.spark.repl.SparkIMain$ReadEvalPrint.call(SparkIMain.scala:1065)\n\tat org.apache.spark.repl.SparkIMain$Request.loadAndRun(SparkIMain.scala:1340)\n\tat org.apache.spark.repl.SparkIMain.loadAndRunReq$1(SparkIMain.scala:840)\n\tat org.apache.spark.repl.SparkIMain.interpret(SparkIMain.scala:871)\n\tat org.apache.spark.repl.SparkIMain.interpret(SparkIMain.scala:819)\n\tat org.apache.zeppelin.spark.SparkInterpreter.interpretInput(SparkInterpreter.java:709)\n\tat org.apache.zeppelin.spark.SparkInterpreter.interpret(SparkInterpreter.java:674)\n\tat org.apache.zeppelin.spark.SparkInterpreter.interpret(SparkInterpreter.java:667)\n\tat org.apache.zeppelin.interpreter.ClassloaderInterpreter.interpret(ClassloaderInterpreter.java:57)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:93)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:300)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:169)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:134)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\n\tat java.lang.Thread.run(Thread.java:745)\n\n"
+        "msg": "import scala.collection.Map\nimport scala.collection.mutable.ArrayBuffer\nimport scala.util.Random\nimport org.apache.spark.{SparkConf, SparkContext}\nimport org.apache.spark.SparkContext._\nimport org.apache.spark.broadcast.Broadcast\nimport org.apache.spark.mllib.recommendation._\nimport org.apache.spark.rdd.RDD\nrawUserArtistData: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[9] at textFile at \u003cconsole\u003e:63\nrawArtistData: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[11] at textFile at \u003cconsole\u003e:61\nrawArtistAlias: org.apache.spark.rdd.RDD[String] \u003d MapPartitionsRDD[13] at textFile at \u003cconsole\u003e:61\n(count: 10000, mean: 1000036.970200, stdev: 21.921061, max: 1000072.000000, min: 1000002.000000)\n(count: 10000, mean: 816436.781400, stdev: 666145.626300, max: 10783758.000000, min: 1.000000)\nWrappedArray() -\u003e WrappedArray()\n(1000020,0.2573087811470032, 0.41299599409103394, 0.08635016530752182, -0.21631868183612823, 0.35993534326553345, -0.46458613872528076, -0.4026999771595001, 0.532539963722229, 0.047708284109830856, 0.25637051463127136)\njava.util.NoSuchElementException: next on empty iterator\n\tat scala.collection.Iterator$$anon$2.next(Iterator.scala:39)\n\tat scala.collection.Iterator$$anon$2.next(Iterator.scala:37)\n\tat scala.collection.IndexedSeqLike$Elements.next(IndexedSeqLike.scala:64)\n\tat scala.collection.IterableLike$class.head(IterableLike.scala:91)\n\tat scala.collection.mutable.ArrayBuffer.scala$collection$IndexedSeqOptimized$$super$head(ArrayBuffer.scala:47)\n\tat scala.collection.IndexedSeqOptimized$class.head(IndexedSeqOptimized.scala:120)\n\tat scala.collection.mutable.ArrayBuffer.head(ArrayBuffer.scala:47)\n\tat org.apache.spark.mllib.recommendation.MatrixFactorizationModel.recommendProducts(MatrixFactorizationModel.scala:168)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.model(\u003cconsole\u003e:64)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:80)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:85)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:87)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:89)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:91)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:93)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:95)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:97)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:99)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:101)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:103)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:105)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:107)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:109)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:111)\n\tat $iwC$$iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:113)\n\tat $iwC$$iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:115)\n\tat $iwC$$iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:117)\n\tat $iwC$$iwC.\u003cinit\u003e(\u003cconsole\u003e:119)\n\tat $iwC.\u003cinit\u003e(\u003cconsole\u003e:121)\n\tat \u003cinit\u003e(\u003cconsole\u003e:123)\n\tat .\u003cinit\u003e(\u003cconsole\u003e:127)\n\tat .\u003cclinit\u003e(\u003cconsole\u003e)\n\tat .\u003cinit\u003e(\u003cconsole\u003e:7)\n\tat .\u003cclinit\u003e(\u003cconsole\u003e)\n\tat $print(\u003cconsole\u003e)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\n\tat sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\n\tat sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\n\tat java.lang.reflect.Method.invoke(Method.java:497)\n\tat org.apache.spark.repl.SparkIMain$ReadEvalPrint.call(SparkIMain.scala:1065)\n\tat org.apache.spark.repl.SparkIMain$Request.loadAndRun(SparkIMain.scala:1340)\n\tat org.apache.spark.repl.SparkIMain.loadAndRunReq$1(SparkIMain.scala:840)\n\tat org.apache.spark.repl.SparkIMain.interpret(SparkIMain.scala:871)\n\tat org.apache.spark.repl.SparkIMain.interpret(SparkIMain.scala:819)\n\tat org.apache.zeppelin.spark.SparkInterpreter.interpretInput(SparkInterpreter.java:709)\n\tat org.apache.zeppelin.spark.SparkInterpreter.interpret(SparkInterpreter.java:674)\n\tat org.apache.zeppelin.spark.SparkInterpreter.interpret(SparkInterpreter.java:667)\n\tat org.apache.zeppelin.interpreter.ClassloaderInterpreter.interpret(ClassloaderInterpreter.java:57)\n\tat org.apache.zeppelin.interpreter.LazyOpenInterpreter.interpret(LazyOpenInterpreter.java:93)\n\tat org.apache.zeppelin.interpreter.remote.RemoteInterpreterServer$InterpretJob.jobRun(RemoteInterpreterServer.java:300)\n\tat org.apache.zeppelin.scheduler.Job.run(Job.java:169)\n\tat org.apache.zeppelin.scheduler.FIFOScheduler$1.run(FIFOScheduler.java:134)\n\tat java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)\n\tat java.util.concurrent.FutureTask.run(FutureTask.java:266)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)\n\tat java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)\n\tat java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)\n\tat java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)\n\tat java.lang.Thread.run(Thread.java:745)\n\n"
       },
       "dateCreated": "Oct 21, 2015 9:24:15 AM",
-      "dateStarted": "Mar 22, 2016 9:48:39 PM",
-      "dateFinished": "Mar 22, 2016 9:48:50 PM",
+      "dateStarted": "Mar 28, 2016 5:33:36 PM",
+      "dateFinished": "Mar 28, 2016 5:33:46 PM",
       "status": "ERROR",
       "progressUpdateIntervalMs": 500
     },
@@ -679,7 +679,7 @@
       "progressUpdateIntervalMs": 500
     }
   ],
-  "name": "Recommending music (alternating least squares recommender)",
+  "name": "AAS (Chapter 3): Recommending music using alternating least squares recommender",
   "id": "2B1FFA2TN",
   "angularObjects": {
     "2BEGYQNZC": [],
@@ -697,6 +697,8 @@
     "2BD11QSCB": [],
     "2BDQMJZ1E": []
   },
-  "config": {},
+  "config": {
+    "looknfeel": "default"
+  },
   "info": {}
 }
