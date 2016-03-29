@@ -24,3 +24,4 @@
 | Description                         | Language | ML-Component | Link      | View | Author                                                               |
 |-------------------------------------|----------|--------------|-----------|------|----------------------------------------------------------------------|
 | Kaggle- Titanic survival prediction | SparkSQL |              | 2BEVBMRCY |      | https://www.kaggle.com/c/titanic/details/getting-started-with-python |
+| earthquake visualisation            | Spark    |              | 2BEPUUY8B |      |                                                                      |
