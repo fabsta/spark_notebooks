@@ -20,6 +20,11 @@
 | AAS (Chapter 11): Analyzing Neuroimaging Data with PySpark and Thunder                     | Spark    |                        |      |      |
 
 
+#Machine learning
+| Description                         | Language | ML-Component        | Link               | View | Author                                                               |
+|-------------------------------------|----------|---------------------|--------------------|------|----------------------------------------------------------------------|
+| Kaggle- AirBNB - Data exploration   | Python   | feature engineering | ipython_notebooks  |      | https://www.kaggle.com/c/titanic/details/getting-started-with-python |
+|
 #Other 
 | Description                         | Language | ML-Component | Link      | View | Author                                                               |
 |-------------------------------------|----------|--------------|-----------|------|----------------------------------------------------------------------|
