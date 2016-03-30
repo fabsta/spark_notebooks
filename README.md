@@ -21,10 +21,13 @@
 
 
 #Machine learning
-| Description                         | Language | ML-Component        | Link               | View | Author                                                               |
-|-------------------------------------|----------|---------------------|--------------------|------|----------------------------------------------------------------------|
-| Kaggle- AirBNB - Data exploration   | Python   | feature engineering | ipython_notebooks  |      | https://www.kaggle.com/c/titanic/details/getting-started-with-python |
-|
+| Description                         | Language | ML-Component        | Link               | View | Author                                                                                         |
+|-------------------------------------|----------|---------------------|--------------------|------|------------------------------------------------------------------------------------------------|
+| Kaggle- AirBNB - Data exploration   | Python   | feature engineering | ipython_notebooks  |      | https://www.kaggle.com/c/titanic/details/getting-started-with-python                           |
+| Kaggle- AirBNB - Data exploration 2 | Python   | feature engineering | ipython_notebooks  |      | https://www.kaggle.com/dimon009/airbnb-recruiting-new-user-bookings/airbnb-exploratory-analysis|
+
+
+
 #Other 
 | Description                         | Language | ML-Component | Link      | View | Author                                                               |
 |-------------------------------------|----------|--------------|-----------|------|----------------------------------------------------------------------|
